@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitlife</title>
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="../static/favicon.svg" type="image/svg+xml">
+
+    {% block style %}
+    {% endblock %}
+
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+        rel="stylesheet">
+
+    <!-- 
+    - preload images
+  -->
+    <link rel="preload" as="image" href="../static/images/hero-banner.png">
+    <link rel="preload" as="image" href="../static/images/hero-circle-one.png">
+    <link rel="preload" as="image" href="../static/images/hero-circle-two.png">
+    <link rel="preload" as="image" href="../static/images/heart-rate.svg">
+    <link rel="preload" as="image" href="../static/images/calories.svg">
+
+</head>
+
+<body id="top">
+
+    {% include 'navbar.html' %}
+
+    {% block body %}
+
+
+
+    {% endblock %}
+
+    {% include 'footer.html' %}
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="../static/js/script.js" defer></script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+
+{% block style %}
+<!-- 
+    - custom css link
+-->
+<link rel="stylesheet" href="../static/css/style.css">
+{% endblock %}
+
+{% block body %}
+
+
+<main>
+    <article>
+
+        <!-- 
+        - #HERO
+      -->
+
+        {% include 'homeSections/hero.html' %}
+
+
+
+        <!-- 
+            - #ABOUT
+        -->
+
+        {% include 'homeSections/about.html' %}
+
+
+        <!-- 
+            - #VIDEO
+        -->
+
+        {% include 'homeSections/video.html' %}
+
+
+        <!-- 
+            - #CLASS
+        -->
+
+        {% include 'homeSections/classes.html' %}
+
+
+        <!-- 
+            - #BLOG
+        -->
+
+        {% include 'homeSections/blog.html' %}
+
+    </article>
+</main>
+
+{% endblock %}
