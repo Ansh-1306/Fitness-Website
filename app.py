@@ -37,11 +37,11 @@ def load_classes_from_db():
 def home_page():
     classes = load_classes_from_db()
 
-    return render_template('home.html', classes = classes)
+    return render_template('home.html', classes = classes, login=False)
 
 
 @app.route("/login")
 def login_page():
-    return render_template('login.html')
+    return render_template('login.html', login=True)
 
     

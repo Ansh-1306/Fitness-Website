@@ -1,7 +1,7 @@
 <header class="header" data-header>
     <div class="container">
 
-        <a href="#" class="logo">
+        <a href="{{ url_for('home_page') }}" class="logo">
             <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
 
             <span class="span">Fitlife</span>
@@ -15,9 +15,14 @@
 
             <ul class="navbar-list">
 
+
+
+
                 <li>
-                    <a href="{{ url_for('home_page') }}" class="navbar-link active" data-nav-link>Home</a>
+                    <a href="{{ url_for('home_page') }}" class="navbar-link" data-nav-link>Home</a>
                 </li>
+
+                {% if login == False %}
 
                 <li>
                     <a href="#about" class="navbar-link" data-nav-link>About Us</a>
@@ -35,11 +40,15 @@
                     <a href="#contact" class="navbar-link" data-nav-link>Contact Us</a>
                 </li>
 
+                {% endif %}
+
             </ul>
 
         </nav>
 
+
         <a href="{{ url_for('login_page') }}" class="btn btn-secondary">Join Now</a>
+
 
         <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
             <span class="line"></span>
