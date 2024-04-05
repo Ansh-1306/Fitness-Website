@@ -8,111 +8,28 @@
 
         <ul class="class-list has-scrollbar">
 
+            {% for class in classes %}
             <li class="scrollbar-item">
                 <div class="class-card">
 
                     <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                        <img src="../static/images/class-1.jpg" width="416" height="240" loading="lazy"
-                            alt="Weight Lifting" class="img-cover">
-                    </figure>
-
-                    <div class="card-content">
-
-                        <div class="title-wrapper">
-                            <img src="../static/images/class-icon-1.png" width="52" height="52" aria-hidden="true"
-                                alt="" class="title-icon">
-
-                            <h3 class="h3">
-                                <a href="#" class="card-title">Weight Lifting</a>
-                            </h3>
-                        </div>
-
-                        <p class="card-text">
-                            Suspendisse nisi libero, cursus ac magna sit amet, fermentum imperdiet nisi.
-                        </p>
-
-                        <div class="card-progress">
-
-                            <div class="progress-wrapper">
-                                <p class="progress-label">Class Full</p>
-
-                                <span class="progress-value">85%</span>
-                            </div>
-
-                            <div class="progress-bg">
-                                <div class="progress-bar" style="width: 85%"></div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </li>
-
-            <li class="scrollbar-item">
-                <div class="class-card">
-
-                    <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                        <img src="../static/images/class-2.jpg" width="416" height="240" loading="lazy"
-                            alt="Cardio & Strenght" class="img-cover">
-                    </figure>
-
-                    <div class="card-content">
-
-                        <div class="title-wrapper">
-                            <img src="../static/images/class-icon-2.png" width="52" height="52" aria-hidden="true"
-                                alt="" class="title-icon">
-
-                            <h3 class="h3">
-                                <a href="#" class="card-title">Cardio & Strenght</a>
-                            </h3>
-                        </div>
-
-                        <p class="card-text">
-                            Suspendisse nisi libero, cursus ac magna sit amet, fermentum imperdiet nisi.
-                        </p>
-
-                        <div class="card-progress">
-
-                            <div class="progress-wrapper">
-                                <p class="progress-label">Class Full</p>
-
-                                <span class="progress-value">70%</span>
-                            </div>
-
-                            <div class="progress-bg">
-                                <div class="progress-bar" style="width: 70%"></div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </li>
-
-            <li class="scrollbar-item">
-                <div class="class-card">
-
-                    <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                        <img src="../static/images/class-3.jpg" width="416" height="240" loading="lazy" alt="Power Yoga"
+                        <img src="{{ class.img }}" width="416" height="240" loading="lazy" alt="{{ class.name }}"
                             class="img-cover">
                     </figure>
 
                     <div class="card-content">
 
                         <div class="title-wrapper">
-                            <img src="../static/images/class-icon-3.png" width="52" height="52" aria-hidden="true"
-                                alt="" class="title-icon">
+                            <img src="{{ class.icon }}" width="52" height="52" aria-hidden="true" alt=""
+                                class="title-icon">
 
                             <h3 class="h3">
-                                <a href="#" class="card-title">Power Yoga</a>
+                                <a href="#" class="card-title">{{ class.name }}</a>
                             </h3>
                         </div>
 
                         <p class="card-text">
-                            Suspendisse nisi libero, cursus ac magna sit amet, fermentum imperdiet nisi.
+                            {{ class.des }}
                         </p>
 
                         <div class="card-progress">
@@ -120,11 +37,11 @@
                             <div class="progress-wrapper">
                                 <p class="progress-label">Class Full</p>
 
-                                <span class="progress-value">90%</span>
+                                <span class="progress-value">{{ (class.booked/class.total) * 100 }}%</span>
                             </div>
 
                             <div class="progress-bg">
-                                <div class="progress-bar" style="width: 90%"></div>
+                                <div class="progress-bar" style="width: {{ (class.booked/class.total) * 100 }}%"></div>
                             </div>
 
                         </div>
@@ -134,47 +51,7 @@
                 </div>
             </li>
 
-            <li class="scrollbar-item">
-                <div class="class-card">
-
-                    <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                        <img src="../static/images/class-4.jpg" width="416" height="240" loading="lazy"
-                            alt="The Fitness Pack" class="img-cover">
-                    </figure>
-
-                    <div class="card-content">
-
-                        <div class="title-wrapper">
-                            <img src="../static/images/class-icon-4.png" width="52" height="52" aria-hidden="true"
-                                alt="" class="title-icon">
-
-                            <h3 class="h3">
-                                <a href="#" class="card-title">The Fitness Pack</a>
-                            </h3>
-                        </div>
-
-                        <p class="card-text">
-                            Suspendisse nisi libero, cursus ac magna sit amet, fermentum imperdiet nisi.
-                        </p>
-
-                        <div class="card-progress">
-
-                            <div class="progress-wrapper">
-                                <p class="progress-label">Class Full</p>
-
-                                <span class="progress-value">60%</span>
-                            </div>
-
-                            <div class="progress-bg">
-                                <div class="progress-bar" style="width: 60%"></div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </li>
+            {% endfor %}
 
         </ul>
 
