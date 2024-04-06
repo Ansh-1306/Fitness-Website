@@ -33,6 +33,10 @@ def load_classes_from_db():
         return classes        
     except mysql.connector.Error as e:
         print(e)
+        global isLoggedIn
+        classes = load_classes_from_db()
+        isLoggedIn = False
+        return render_template('home.html', classes = classes, login=False, isLoggedIn = isLoggedIn)
     finally:
         cursor.close()
 
@@ -71,7 +75,7 @@ def sign_up():
             if user[2] == phone:
                 msg =  "User already exists!"
                 isLoggedIn = False
-                return render_template('login.html', isLoggedIn = isLoggedIn, msgs=msg )
+                return render_template('login.html', isLoggedIn = isLoggedIn, msg=msg )
         if cpassword == password:
             insert_query = "INSERT INTO users(name, phone, age, height, weight, gender, password) VALUES ('"+name+"','"+phone+"',"+age+","+height+","+weight+",'"+gender+"','"+password+"')"
             cursor.execute(insert_query)
@@ -86,9 +90,12 @@ def sign_up():
         else:
             msg = "Password does not match"
             isLoggedIn = False
-        return render_template('login.html', isLoggedIn = isLoggedIn, msgs = msg)
+        return render_template('login.html', isLoggedIn = isLoggedIn, msg = msg)
     except mysql.connector.Error as e:
         print(e)
+        classes = load_classes_from_db()
+        isLoggedIn = False
+        return render_template('home.html', classes = classes, login=False, isLoggedIn = isLoggedIn)
     finally:
         cursor.close()
     
@@ -112,17 +119,17 @@ def login():
                     classes = load_classes_from_db()
                     return render_template('home.html', classes = classes, login=False, isLoggedIn = isLoggedIn)
                 else:
-                    msgl = "Incorrect Password"
+                    msg = "Incorrect Password"
             else:
-                msgl = "User does not exist. Please Sign Up first "
+                msg = "User does not exist. Please Sign Up first "
 
         connection.commit()
         isLoggedIn = False
-        return render_template('login.html', login=True, isLoggedIn = isLoggedIn, msgl = msg)
+        return render_template('login.html', login=True, isLoggedIn = isLoggedIn, msg = msg)
     except mysql.connector.Error as e:
         print(e)
+        classes = load_classes_from_db()
+        isLoggedIn = False
+        return render_template('home.html', classes = classes, login=False, isLoggedIn = isLoggedIn)
     finally:
         cursor.close()
-
-
-    
