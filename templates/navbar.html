@@ -46,9 +46,17 @@
 
         </nav>
 
+        {% if isLoggedIn == False %}
 
         <a href="{{ url_for('login_page') }}" class="btn btn-secondary">Join Now</a>
 
+        {% endif %}
+
+        {% if isLoggedIn == True %}
+        
+        <a href="{{ url_for('login_page') }}" class="btn btn-secondary">Logout</a>
+        
+        {% endif %}
 
         <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
             <span class="line"></span>

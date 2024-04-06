@@ -17,7 +17,7 @@
 
     }
 
-    .header{
+    .header {
         padding-block: 20px !important;
     }
 
@@ -81,7 +81,7 @@
         transition: -webkit-transform 1.2s ease-in-out;
         transition: transform 1.2s ease-in-out;
         transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
-        padding: 50px 30px 0;
+        padding: 40px 30px 0;
     }
 
     .sub-cont {
@@ -265,13 +265,14 @@
     label {
         display: block;
         width: 260px;
+        height: 62.8px !important;
         margin: 25px auto 0;
         text-align: center;
     }
 
     label span {
-        font-size: 12px;
-        color: #cfcfcf;
+        font-size: 14px;
+        color: rgba(56, 56, 56, 0.7);
         text-transform: uppercase;
     }
 
@@ -280,16 +281,27 @@
         width: 100%;
         margin-top: 5px;
         padding-bottom: 5px;
-        font-size: 16px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        font-size: 18px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+        text-align: center;
+    }
+
+    select {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        padding-bottom: 5px;
+        font-size: 18px;
+        border: none !important;
+        /* border-bottom: 2px solid rgba(0, 0, 0, 0.4) !important; */
         text-align: center;
     }
 
     .forgot-pass {
         margin-top: 15px;
         text-align: center;
-        font-size: 12px;
-        color: #cfcfcf;
+        font-size: 14px;
+        color: rgba(56, 56, 56, 0.7);
     }
 
     .submit {
@@ -342,17 +354,19 @@
 <br>
 <div class="cont " style="margin-top: 100px;">
     <div class="form sign-in">
-        <h2>Welcome</h2>
-        <label>
-            <span>Email</span>
-            <input type="email" />
-        </label>
-        <label>
-            <span>Password</span>
-            <input type="password" />
-        </label>
-        <p class="forgot-pass">Forgot password?</p>
-        <button type="button" class="submit">Sign In</button>
+        <form action="{{ url_for('login') }}" method="post">
+            <h2>Welcome</h2>
+            <label>
+                <span>Phone Number</span>
+                <input type="phone" name="phone"/>
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="password"/>
+            </label>
+            <p class="forgot-pass">Forgot password?</p>
+            <button type="submit" class="submit" value="submit">Sign In</button>
+        </form>
 
     </div>
     <div class="sub-cont">
@@ -363,7 +377,7 @@
             </div>
             <div class="img__text m--in">
 
-                <h3>If you already has an account, just sign in.<h3>
+                <h3>If you already have an account, just sign in.<h3>
             </div>
             <div class="img__btn">
                 <span class="m--up">Sign Up</span>
@@ -371,21 +385,50 @@
             </div>
         </div>
         <div class="form sign-up">
-            <h2>Create your Account</h2>
-            <label>
-                <span>Name</span>
-                <input type="text" />
-            </label>
-            <label>
-                <span>Email</span>
-                <input type="email" />
-            </label>
-            <label>
-                <span>Password</span>
-                <input type="password" />
-            </label>
-            <button type="button" class="submit">Sign Up</button>
-
+            <form action="{{ url_for('sign_up') }}" method="post">
+                <h2>Create your Account</h2>
+                <div style="display: inline-block; padding-right: 5px;">
+                    <label>
+                        <span>Name</span>
+                        <input type="text" name="name" />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" />
+                    </label>
+                    <label>
+                        <span>Age</span>
+                        <input type="text" name="age" />
+                    </label>
+                    <label>
+                        <span>Weight</span>
+                        <input type="text" name="weight" />
+                    </label>
+                </div>
+                <div style="display: inline-block;">
+                    <label>
+                        <span>Phone Number</span>
+                        <input type="phone" name="phone" />
+                    </label>
+                    <label>
+                        <span>Confirm Password</span>
+                        <input type="password" name="cpassword" />
+                    </label>
+                    <label>
+                        <span>Gender</span>
+                        <select name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Height</span>
+                        <input type="text" name="height" />
+                    </label>
+                </div>
+                <button type="submit" class="submit" value="submit">Sign Up</button>
+            </form>
         </div>
     </div>
 </div>
@@ -395,6 +438,7 @@
         document.querySelector('.cont').classList.toggle('s--signup');
     });
 </script>
+
 
 
 {% endblock %}
