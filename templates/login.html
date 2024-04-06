@@ -358,13 +358,16 @@
             <h2>Welcome</h2>
             <label>
                 <span>Phone Number</span>
-                <input type="phone" name="phone"/>
+                <input type="phone" name="phone" required />
             </label>
             <label>
                 <span>Password</span>
-                <input type="password" name="password"/>
+                <input type="password" name="password" required />
             </label>
             <p class="forgot-pass">Forgot password?</p>
+            {% if msgl != '' %}
+            <h4 style="text-align: center; padding-top: 20px; color: rgba(255, 0, 0, 0.8);">{{ msg }}</h4>
+            {% endif %}
             <button type="submit" class="submit" value="submit">Sign In</button>
         </form>
 
@@ -390,29 +393,29 @@
                 <div style="display: inline-block; padding-right: 5px;">
                     <label>
                         <span>Name</span>
-                        <input type="text" name="name" />
+                        <input type="text" name="name" required />
                     </label>
                     <label>
                         <span>Password</span>
-                        <input type="password" name="password" />
+                        <input type="password" name="password" required />
                     </label>
                     <label>
                         <span>Age</span>
-                        <input type="text" name="age" />
+                        <input type="text" name="age" required />
                     </label>
                     <label>
                         <span>Weight</span>
-                        <input type="text" name="weight" />
+                        <input type="text" name="weight" required />
                     </label>
                 </div>
                 <div style="display: inline-block;">
                     <label>
                         <span>Phone Number</span>
-                        <input type="phone" name="phone" />
+                        <input type="phone" name="phone" required />
                     </label>
                     <label>
                         <span>Confirm Password</span>
-                        <input type="password" name="cpassword" />
+                        <input type="password" name="cpassword" required />
                     </label>
                     <label>
                         <span>Gender</span>
@@ -427,6 +430,9 @@
                         <input type="text" name="height" />
                     </label>
                 </div>
+                {% if msgs != '' %}
+                <h4 style="text-align: center; padding-top: 20px; color: rgba(255, 0, 0, 0.8);">{{ msg }}</h4>
+                {% endif %}
                 <button type="submit" class="submit" value="submit">Sign Up</button>
             </form>
         </div>

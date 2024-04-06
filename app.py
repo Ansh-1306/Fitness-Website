@@ -71,7 +71,7 @@ def sign_up():
             if user[2] == phone:
                 msg =  "User already exists!"
                 isLoggedIn = False
-                return render_template('login.html', isLoggedIn = isLoggedIn, msg=msg )
+                return render_template('login.html', isLoggedIn = isLoggedIn, msgs=msg )
         if cpassword == password:
             insert_query = "INSERT INTO users(name, phone, age, height, weight, gender, password) VALUES ('"+name+"','"+phone+"',"+age+","+height+","+weight+",'"+gender+"','"+password+"')"
             cursor.execute(insert_query)
@@ -86,7 +86,7 @@ def sign_up():
         else:
             msg = "Password does not match"
             isLoggedIn = False
-        return render_template('login.html', isLoggedIn = isLoggedIn, msg = msg)
+        return render_template('login.html', isLoggedIn = isLoggedIn, msgs = msg)
     except mysql.connector.Error as e:
         print(e)
     finally:
@@ -112,13 +112,13 @@ def login():
                     classes = load_classes_from_db()
                     return render_template('home.html', classes = classes, login=False, isLoggedIn = isLoggedIn)
                 else:
-                    msg = "Incorrect Password"
+                    msgl = "Incorrect Password"
             else:
-                msg = "User does not exist. Please Sign Up first "
+                msgl = "User does not exist. Please Sign Up first "
 
         connection.commit()
         isLoggedIn = False
-        return render_template('login.html', login=True, isLoggedIn = isLoggedIn, msg = msg)
+        return render_template('login.html', login=True, isLoggedIn = isLoggedIn, msgl = msg)
     except mysql.connector.Error as e:
         print(e)
     finally:
